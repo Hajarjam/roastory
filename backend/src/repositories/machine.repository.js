@@ -1,0 +1,1 @@
+const Machine = require("../models/machine.model"); 
