@@ -10,6 +10,7 @@ import RegisterPage from "../pages/public/auth/RegisterPage";
 
 import ProductCart from "../pages/public/ProductCart";
 import OrderConfirmed from "../pages/public/OrderConfirmed";
+import PayementPage from "../pages/public/PayementPage";
 
 export default function PublicRoutes() {
   return (
@@ -23,6 +24,7 @@ export default function PublicRoutes() {
       <Route path="/cart" element={<ProductCart />} />
       <Route path="Confirmed" element={<OrderConfirmed />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/payment" element={<PayementPage />} />
     </Routes>
   );
 }
