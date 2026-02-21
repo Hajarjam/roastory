@@ -14,6 +14,8 @@ import ActivateAccountPage from "../pages/public/auth/ActivateAccountPage";
 import ProductCart from "../pages/public/ProductCart";
 import OrderConfirmed from "../pages/public/OrderConfirmed";
 import PayementPage from "../pages/public/PayementPage";
+import SubscriptionPage from "../pages/public/Subscriptionpage";
+
 
 export default function PublicRoutes() {
   return (
@@ -34,6 +36,7 @@ export default function PublicRoutes() {
       <Route path="/activate/:token" element={<ActivateAccountPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
       <Route path="/payment" element={<PayementPage />} />
+      <Route path="/subscribe" element={<SubscriptionPage/>} />
     </Routes>
   );
 }

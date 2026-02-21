@@ -390,7 +390,7 @@ export default function CoffeeDetailPage() {
                           Intensity :
                         </div>
                         <div className="text-xs md:text-sm text-grey">
-                          {"☕".repeat(product.intensity || 3)} (
+                          {"☕".repeat(product.intensity )} (
                           {product.intensity}/5)
                         </div>
                       </div>
