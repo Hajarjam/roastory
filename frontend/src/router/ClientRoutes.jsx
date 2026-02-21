@@ -16,7 +16,15 @@ import ClientDashboard from "../pages/client/clientDashboardPage";
 
 
 const ClientRoutes = () => {
-  const { user, role } = useAuth();
+  const { user, role, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-lg">Verification de l'authentification...</div>
+      </div>
+    );
+  }
 
   // redirect if not logged in
   if (!user) return <Navigate to="/login" replace />;
