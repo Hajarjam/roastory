@@ -27,9 +27,6 @@ export default function PublicRoutes() {
       <Route path="/machines" element={<MachinePage />} />
       <Route path="/machine/:id" element={<MachineDetailPage />} />
       <Route path="/machines/:id" element={<MachineDetailPage />} />
-      <Route path="/cart" element={<ProductCart />} />
-      <Route path="/confirmed" element={<OrderConfirmed />} />
-      <Route path="/Confirmed" element={<OrderConfirmed />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
@@ -37,6 +34,7 @@ export default function PublicRoutes() {
       <Route path="*" element={<Navigate to="/" replace />} />
       <Route path="/payment" element={<PayementPage />} />
       <Route path="/subscribe" element={<SubscriptionPage/>} />
+      
     </Routes>
   );
 }
