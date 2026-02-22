@@ -17,8 +17,8 @@ export const MenuUser = ({ sidebarOpen = false, setSidebarOpen = () => {} }) => 
 
   const sideItems = [
     { id: "dashboard", label: "Dashboard", to: "/client" },
-    { id: "subscriptions", label: "Subscriptions History", to: "/client/subscriptions" },
-    { id: "profile", label: "Profile", to: "/client/profile" },
+    { id: "subscriptions", label: "Subscription History", to: "/client/subscriptions" },
+    { id: "profil", label: "Profil", to: "/client/profil" },
   ];
 
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
@@ -53,7 +53,7 @@ export const MenuUser = ({ sidebarOpen = false, setSidebarOpen = () => {} }) => 
           <div className="flex items-center justify-between mb-10 pb-5 border-b border-peach/50">
             <div className="flex items-center gap-3">
               <img src="/assets/logo.png" alt="Logo" className="w-10 h-10" />
-              <span className="text-lg font-instrument-serif tracking-wide">The Beans</span>
+              <span className="text-lg font-instrument-serif tracking-wide">Gold Beans</span>
             </div>
             <button onClick={toggleSidebar} className="lg:hidden text-peach hover:text-peach">
               ✕
