@@ -3,8 +3,20 @@ const Machine = require("../models/machine.model");
 const fs = require("fs");
 const path = require("path");
 
-const buildImageUrl = (img) =>
-  img ? `${process.env.BASE_URL || "http://localhost:5001"}${img}` : null;
+const LOCAL_API_BASE_URL = "http://localhost:5001";
+
+const isRemoteImage = (img) =>
+  typeof img === "string" && /^https?:\/\//i.test(img);
+
+const normalizeImageName = (img) => path.basename(String(img || "").trim());
+
+const buildImageUrl = (img) => {
+  if (!img) return null;
+  if (isRemoteImage(img)) return img;
+
+  const fileName = normalizeImageName(img);
+  return fileName ? `${LOCAL_API_BASE_URL}/uploads/machines/${fileName}` : null;
+};
 
 
 // GET all machines 
@@ -15,7 +27,7 @@ const getAllMachines = async (req, res, next) => {
     // Map images to full URLs so frontend can load them directly
     const mapped = machines.map((m) => {
       const obj = m.toObject ? m.toObject() : { ...m };
-      obj.images = (obj.images || []).map(buildImageUrl);
+      obj.images = (obj.images || []).map(buildImageUrl).filter(Boolean);
       return obj;
     });
     res.json(mapped);
@@ -31,7 +43,7 @@ const getMachineById = async (req, res, next) => {
     const machine = await machineService.getMachineById(req.params.id);
     if (!machine) return res.status(404).json({ message: "Machine not found" });
     const obj = machine.toObject ? machine.toObject() : { ...machine };
-    obj.images = (obj.images || []).map(buildImageUrl);
+    obj.images = (obj.images || []).map(buildImageUrl).filter(Boolean);
     res.json(obj);
   } catch (err) {
     next(err);
@@ -49,9 +61,9 @@ const createMachine = async (req, res, next) => {
         : [];
 
     const images = Array.isArray(req.files)
-      ? req.files.map((f) => `/uploads/machines/${f.filename}`)
+      ? req.files.map((f) => f.filename)
       : req.file
-      ? [`/uploads/machines/${req.file.filename}`]
+      ? [req.file.filename]
       : [];
 
     const data = {
@@ -66,7 +78,7 @@ const createMachine = async (req, res, next) => {
 
     const machine = await machineService.createMachine(data);
     // ensure images are full URLs for client
-    machine.images = (machine.images || []).map(buildImageUrl);
+    machine.images = (machine.images || []).map(buildImageUrl).filter(Boolean);
     res.status(201).json(machine);
   } catch (err) {
     next(err);
@@ -98,9 +110,9 @@ const updateMachine = async (req, res, next) => {
 
     // Handle new images (support multiple files)
     const newImages = Array.isArray(req.files)
-      ? req.files.map((f) => `/uploads/machines/${f.filename}`)
+      ? req.files.map((f) => f.filename)
       : req.file
-      ? [`/uploads/machines/${req.file.filename}`]
+      ? [req.file.filename]
       : null;
 
     if (newImages && newImages.length) {
@@ -108,7 +120,12 @@ const updateMachine = async (req, res, next) => {
       if (Array.isArray(machine.images) && machine.images.length > 0) {
         machine.images.forEach((img) => {
           try {
-            const oldImagePath = path.join(process.cwd(), img.replace(/^[\/]/, ""));
+            if (!img || isRemoteImage(img)) return;
+
+            const imageName = normalizeImageName(img);
+            if (!imageName) return;
+
+            const oldImagePath = path.join(process.cwd(), "uploads", "machines", imageName);
             fs.unlink(oldImagePath, (err) => {
               if (err) console.warn("Failed to delete old image:", err.message);
             });
@@ -121,7 +138,7 @@ const updateMachine = async (req, res, next) => {
     }
 
     const updatedMachine = await machineService.updateMachine(req.params.id, data);
-    updatedMachine.images = (updatedMachine.images || []).map(buildImageUrl);
+    updatedMachine.images = (updatedMachine.images || []).map(buildImageUrl).filter(Boolean);
 
     res.json(updatedMachine);
   } catch (err) {
@@ -139,7 +156,12 @@ const deleteMachine = async (req, res, next) => {
     if (Array.isArray(machine.images) && machine.images.length > 0) {
       machine.images.forEach((img) => {
         try {
-          const imagePath = path.join(process.cwd(), img.replace(/^[\/]/, ""));
+          if (!img || isRemoteImage(img)) return;
+
+          const imageName = normalizeImageName(img);
+          if (!imageName) return;
+
+          const imagePath = path.join(process.cwd(), "uploads", "machines", imageName);
           fs.unlink(imagePath, (err) => {
             if (err) console.warn("Impossible de supprimer l'image :", err.message);
           });
@@ -173,7 +195,7 @@ const getBestSellingMachines = async (req, res) => {
       price: machine.price,
       stock: machine.stock,
       sales: machine.sales || 0,
-      images: (machine.images || []).map(buildImageUrl),
+      images: (machine.images || []).map(buildImageUrl).filter(Boolean),
     }));
 
     res.json(result);

@@ -9,8 +9,20 @@ const path = require("path");
    HELPERS
 ========================= */
 
-const buildImageUrl = (img) =>
-  `http://localhost:5001/uploads/coffees/${img}`;
+const LOCAL_API_BASE_URL = "http://localhost:5001";
+
+const isRemoteImage = (img) =>
+  typeof img === "string" && /^https?:\/\//i.test(img);
+
+const normalizeImageName = (img) => path.basename(String(img || "").trim());
+
+const buildImageUrl = (img) => {
+  if (!img) return null;
+  if (isRemoteImage(img)) return img;
+
+  const fileName = normalizeImageName(img);
+  return fileName ? `${LOCAL_API_BASE_URL}/uploads/coffees/${fileName}` : null;
+};
 
 /* =========================
    COFFEES CRUD
@@ -21,7 +33,7 @@ const getAllCoffees = async (req, res) => {
     const coffees = await coffeeService.getAllCoffees();
     const coffeesWithImages = coffees.map((coffee) => ({
       ...coffee._doc,
-      images: coffee.images.map(buildImageUrl),
+      images: (coffee.images || []).map(buildImageUrl).filter(Boolean),
     }));
     res.json(coffeesWithImages);
   } catch (err) {
@@ -35,7 +47,7 @@ const getCoffeeById = async (req, res, next) => {
     const coffee = await coffeeService.getCoffeeById(req.params.id);
     if (!coffee) return res.status(404).json({ message: "Coffee not found" });
 
-    coffee.images = coffee.images.map(buildImageUrl);
+    coffee.images = (coffee.images || []).map(buildImageUrl).filter(Boolean);
     res.json(coffee);
   } catch (err) {
     next(err);
@@ -59,7 +71,7 @@ const createCoffee = async (req, res, next) => {
     };
 
     const coffee = await coffeeService.createCoffee(data);
-    coffee.images = coffee.images.map(buildImageUrl);
+    coffee.images = (coffee.images || []).map(buildImageUrl).filter(Boolean);
 
     res.status(201).json(coffee);
   } catch (error) {
@@ -89,7 +101,7 @@ const updateCoffee = async (req, res, next) => {
     const coffee = await coffeeService.updateCoffee(req.params.id, data);
     if (!coffee) return res.status(404).json({ message: "Coffee not found" });
 
-    coffee.images = coffee.images.map(buildImageUrl);
+    coffee.images = (coffee.images || []).map(buildImageUrl).filter(Boolean);
     res.json(coffee);
   } catch (error) {
     next(error);
@@ -103,7 +115,12 @@ const deleteCoffee = async (req, res, next) => {
 
     if (coffee.images?.length) {
       coffee.images.forEach((img) => {
-        const imagePath = path.join(process.cwd(), "uploads", "coffees", img);
+        if (!img || isRemoteImage(img)) return;
+
+        const imageName = normalizeImageName(img);
+        if (!imageName) return;
+
+        const imagePath = path.join(process.cwd(), "uploads", "coffees", imageName);
         fs.unlink(imagePath, (err) => {
           if (err) console.warn("Image delete error:", err.message);
         });
@@ -169,7 +186,7 @@ const getBestSellers = async (req, res) => {
       roast: coffee.roastLevel,
       sales: coffee.sales || 0,
       image: coffee.images[0] ? buildImageUrl(coffee.images[0]) : null,
-      images: coffee.images.map(buildImageUrl),
+      images: (coffee.images || []).map(buildImageUrl).filter(Boolean),
     }));
 
     res.json(result);
