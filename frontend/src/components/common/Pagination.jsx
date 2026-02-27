@@ -11,12 +11,12 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
   for (let i = start; i <= end; i++) pages.push(i);
 
   return (
-    <nav className="flex items-center justify-center gap-1 mt-8" aria-label="Pagination">
+    <nav className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 mt-8" aria-label="Pagination">
       <button
         type="button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage <= 1}
-        className="px-3 py-2 rounded-lg border border-[#3B170D]/30 text-[#3B170D] hover:bg-[#3B170D]/10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent transition font-instrument-sans"
+        className="px-2.5 sm:px-3 py-2 rounded-lg border border-[#3B170D]/30 text-[#3B170D] text-xs sm:text-sm hover:bg-[#3B170D]/10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent transition font-instrument-sans"
         aria-label="Previous page"
       >
         Previous
@@ -28,7 +28,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
             <button
               type="button"
               onClick={() => onPageChange(1)}
-              className="w-10 h-10 rounded-lg border border-[#3B170D]/30 text-[#3B170D] hover:bg-[#3B170D]/10 transition font-instrument-sans"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg border border-[#3B170D]/30 text-[#3B170D] text-xs sm:text-sm hover:bg-[#3B170D]/10 transition font-instrument-sans"
             >
               1
             </button>
@@ -40,7 +40,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
             key={page}
             type="button"
             onClick={() => onPageChange(page)}
-            className={`w-10 h-10 rounded-lg font-instrument-sans transition ${
+            className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg text-xs sm:text-sm font-instrument-sans transition ${
               page === currentPage
                 ? "bg-[#3B170D] text-[#FFF3EB] border border-[#3B170D]"
                 : "border border-[#3B170D]/30 text-[#3B170D] hover:bg-[#3B170D]/10"
@@ -57,7 +57,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
             <button
               type="button"
               onClick={() => onPageChange(totalPages)}
-              className="w-10 h-10 rounded-lg border border-[#3B170D]/30 text-[#3B170D] hover:bg-[#3B170D]/10 transition font-instrument-sans"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg border border-[#3B170D]/30 text-[#3B170D] text-xs sm:text-sm hover:bg-[#3B170D]/10 transition font-instrument-sans"
             >
               {totalPages}
             </button>
@@ -69,7 +69,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
         type="button"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage >= totalPages}
-        className="px-3 py-2 rounded-lg border border-[#3B170D]/30 text-[#3B170D] hover:bg-[#3B170D]/10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent transition font-instrument-sans"
+        className="px-2.5 sm:px-3 py-2 rounded-lg border border-[#3B170D]/30 text-[#3B170D] text-xs sm:text-sm hover:bg-[#3B170D]/10 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent transition font-instrument-sans"
         aria-label="Next page"
       >
         Next

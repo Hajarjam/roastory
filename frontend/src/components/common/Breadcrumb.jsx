@@ -49,12 +49,12 @@ export default function Breadcrumb({ compact = false }) {
     return null;
   }
 
-  const spacingClass = compact ? "mt-6 md:mt-10" : "mt-16 md:mt-24";
+  const spacingClass = compact ? "mt-4 sm:mt-6 md:mt-10" : "mt-14 sm:mt-16 md:mt-24";
 
   return (
-    <nav className={`bg-peach-light/30 py-3 px-4 md:px-8 ${spacingClass}`}>
+    <nav className={`bg-peach-light/30 py-2.5 sm:py-3 px-4 sm:px-6 md:px-8 ${spacingClass}`}>
       <div className="max-w-7xl mx-auto">
-        <ol className="flex items-center gap-2 text-sm md:text-base">
+        <ol className="flex flex-wrap items-center gap-2 text-xs sm:text-sm md:text-base">
           {/* Home Link */}
           <li>
             <Link

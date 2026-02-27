@@ -19,9 +19,9 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-50 bg-transparent text-white px-4 sm:px-8 py-4 flex justify-between items-center">
+    <nav className="absolute top-0 left-0 w-full z-50 bg-transparent text-white px-4 sm:px-8 lg:px-12 py-3 sm:py-4 flex justify-between items-center">
       {/* Logo */}
-      <div onClick={() => navigate("/")} className="w-12 h-16 cursor-pointer">
+      <div onClick={() => navigate("/")} className="w-10 h-14 sm:w-12 sm:h-16 cursor-pointer">
         <img
           src="/assets/logo.png"
           alt="logo"
@@ -30,7 +30,7 @@ export default function Navbar() {
       </div>
 
       {/* Desktop menu */}
-      <div className="hidden md:flex gap-6 lg:gap-8 ml-auto">
+      <div className="hidden md:flex gap-5 lg:gap-8 ml-auto">
         {menuItems.map((item) => (
           <div
             key={item.name}
@@ -46,7 +46,7 @@ export default function Navbar() {
       </div>
 
       {/* Desktop buttons */}
-      <div className="hidden md:flex items-center gap-3 ml-8">
+      <div className="hidden md:flex items-center gap-2 lg:gap-3 ml-6 lg:ml-8">
         {!isAuthenticated ? (
           <>
             <Link
@@ -99,7 +99,8 @@ export default function Navbar() {
       <div className="md:hidden">
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="focus:outline-none"
+          className="focus:outline-none rounded p-1"
+          aria-label="Toggle navigation menu"
         >
           <svg
             className="w-6 h-6 text-white"
@@ -115,11 +116,11 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-stone-900/80 flex flex-col items-center gap-4 py-4 md:hidden">
+        <div className="absolute top-full left-0 w-full bg-stone-900/90 backdrop-blur px-4 py-4 flex flex-col items-center gap-3 md:hidden">
           {menuItems.map((item) => (
             <div
               key={item.name}
-              className="text-white hover:text-gray-300 cursor-pointer transition"
+              className="text-white hover:text-gray-300 cursor-pointer transition text-sm"
             >
               {item.link.startsWith("/") ? (
                 <Link to={item.link}>{item.name}</Link>
@@ -132,13 +133,13 @@ export default function Navbar() {
             <>
               <Link
                 to="/login"
-                className="px-6 py-2 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
+                className="w-full max-w-xs px-6 py-2.5 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="px-4 py-2 h-10 border border-white text-white rounded-lg hover:bg-peach hover:border-peach hover:text-black font-instrument-sans transition inline-flex items-center justify-center"
+                className="w-full max-w-xs px-4 py-2.5 border border-white text-white rounded-lg hover:bg-peach hover:border-peach hover:text-black font-instrument-sans transition inline-flex items-center justify-center"
               >
                 Sign Up
               </Link>
@@ -148,17 +149,17 @@ export default function Navbar() {
               <LogoutButton
                 redirectTo="/"
                 onBeforeOpen={() => setMobileMenuOpen(false)}
-                className="px-6 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-black font-instrument-sans transition inline-flex items-center justify-center"
+                className="w-full max-w-xs px-6 py-2.5 border border-white text-white rounded-lg hover:bg-white hover:text-black font-instrument-sans transition inline-flex items-center justify-center"
               />
               <Link
                 to="/client/dashboard"
-                className="px-6 py-2 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
+                className="w-full max-w-xs px-6 py-2.5 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
               >
                 Dashboard
               </Link>
               <Link
                 to="/client/cart"
-                className="px-6 py-2 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
+                className="w-full max-w-xs px-6 py-2.5 bg-white text-black rounded-lg hover:bg-peach font-instrument-sans transition inline-flex items-center justify-center"
               >
                 Cart
               </Link>

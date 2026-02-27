@@ -242,7 +242,7 @@ export default function HomePage() {
 
 
       {/* Mobile & Tablet Layout - stacked squares */}
-      <div className="md:hidden mx-auto w-full max-w-[600px] gap-0 px-8">
+      <div className="md:hidden mx-auto w-full max-w-[600px] gap-0 px-4 sm:px-8">
         {/* Beans Row */}
         <div className="flex w-full gap-0 mb-0">
           <div className="aspect-square w-1/2">
@@ -267,7 +267,7 @@ export default function HomePage() {
             <h3 className="text-xl sm:text-2xl md:text-3xl font-instrument-serif mb-1 font-medium">Coffee Machines</h3>
             <hr className="w-12 sm:w-16 md:w-20 mb-3 sm:mb-4 md:mb-6"></hr>
             <p className="text-xs sm:text-sm font-instrument-sans opacity-80 mb-3 sm:mb-4 tracking-[0.5px] sm:tracking-[0.9px]">Highest Quality Offered</p>
-            <button className="bg-white text-black px-3 sm:px-4 py-1.5 sm:py-2 text-xs rounded font-medium hover:bg-gray-200 transition">
+            <button onClick={() => navigate("/machines")} className="bg-white text-black px-3 sm:px-4 py-1.5 sm:py-2 text-xs rounded font-medium hover:bg-gray-200 transition">
               SHOP NOW
             </button>
           </div>
@@ -313,7 +313,6 @@ export default function HomePage() {
         <div
           className="
           w-[140px] h-[140px]
-          xs:w-[160px] xs:h-[160px]
           sm:w-[180px] sm:h-[180px]
           md:w-[200px] md:h-[200px]
           lg:w-[240px] lg:h-[240px]
@@ -353,7 +352,6 @@ export default function HomePage() {
         <div
           className="
           w-[140px] h-[140px]
-          xs:w-[160px] xs:h-[160px]
           sm:w-[180px] sm:h-[180px]
           md:w-[200px] md:h-[200px]
           lg:w-[240px] lg:h-[240px]
@@ -393,7 +391,6 @@ export default function HomePage() {
         <div
           className="
           w-[140px] h-[140px]
-          xs:w-[160px] xs:h-[160px]
           sm:w-[180px] sm:h-[180px]
           md:w-[200px] md:h-[200px]
           lg:w-[240px] lg:h-[240px]

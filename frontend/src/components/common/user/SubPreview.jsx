@@ -8,7 +8,7 @@ const SubPreview = ({ data, onViewAll }) => {
 
   return (
     <div className="bg-brown text-peach-light rounded-lg shadow-md p-4">
-      <h3 className="text-lg font-semibold mb-2">Subscription History</h3>
+      <h3 className="text-base sm:text-lg font-semibold mb-2">Subscription History</h3>
       <ul className="space-y-2">
         {data.map((sub) => (
           <li key={sub._id} className="border-b border-peach/30 pb-2">

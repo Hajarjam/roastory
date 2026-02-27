@@ -54,10 +54,10 @@ export default function Orders() {
   }, [orders]);
 
   return (
-    <section>
+    <section className="px-4 sm:px-6 lg:px-8">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-2xl font-instrument-serif">Orders</h2>
+          <h2 className="text-xl sm:text-2xl font-instrument-serif">Orders</h2>
           <p className="text-sm text-[#3B170D]/70">
             {summary.count} order(s) | Revenue: {money(summary.total)}
           </p>

@@ -316,8 +316,9 @@ export default function Users() {
       </div>
 
 
-      <div className="hidden sm:block mx-8 mt-4 overflow-hidden rounded-2xl border border-[#EADFD7] bg-white shadow-sm">
-        <table className="w-full text-left">
+      <div className="hidden sm:block mx-4 sm:mx-8 mt-4 overflow-hidden rounded-2xl border border-[#EADFD7] bg-white shadow-sm">
+        <div className="overflow-x-auto">
+        <table className="min-w-[980px] w-full text-left">
           <thead className="bg-[#3B170D] text-white">
             <tr className="text-xs font-extrabold">
               <th className="px-4 py-3"># ID</th>
@@ -413,11 +414,12 @@ export default function Users() {
             )}
           </tbody>
         </table>
+        </div>
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/35 p-4" onMouseDown={() => setOpen(false)}>
-          <div className="w-full max-w-lg rounded-2xl border border-[#EADFD7] bg-white p-5 shadow-xl" onMouseDown={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/35 p-0 sm:p-4" onMouseDown={() => setOpen(false)}>
+          <div className="w-full sm:max-w-lg rounded-t-2xl sm:rounded-2xl border border-[#EADFD7] bg-white p-4 sm:p-5 shadow-xl max-h-[100vh] sm:max-h-[90vh] overflow-y-auto" onMouseDown={(e) => e.stopPropagation()}>
             <h2 className="text-lg font-extrabold">{editing ? "Edit user" : "Add user"}</h2>
 
             <form onSubmit={save} className="mt-4 grid gap-3">
@@ -462,9 +464,9 @@ export default function Users() {
                 Active
               </label>
 
-              <div className="mt-2 flex justify-end gap-2">
-                <button type="button" className="rounded-xl border px-4 py-2" onClick={() => setOpen(false)}>Cancel</button>
-                <button className="rounded-xl bg-[#3B170D] px-4 py-2 text-white font-bold" type="submit">Save</button>
+              <div className="mt-2 flex flex-col-reverse sm:flex-row justify-end gap-2">
+                <button type="button" className="w-full sm:w-auto rounded-xl border px-4 py-2" onClick={() => setOpen(false)}>Cancel</button>
+                <button className="w-full sm:w-auto rounded-xl bg-[#3B170D] px-4 py-2 text-white font-bold" type="submit">Save</button>
               </div>
             </form>
           </div>
@@ -472,16 +474,16 @@ export default function Users() {
       )}
 
       {confirmOpen && (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" onMouseDown={() => !deletingLoading && setConfirmOpen(false)}>
-          <div className="w-full max-w-md rounded-2xl border border-[#EADFD7] bg-white p-5 shadow-xl" onMouseDown={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-0 sm:p-4" onMouseDown={() => !deletingLoading && setConfirmOpen(false)}>
+          <div className="w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl border border-[#EADFD7] bg-white p-4 sm:p-5 shadow-xl" onMouseDown={(e) => e.stopPropagation()}>
             <h3 className="text-lg font-extrabold text-[#3B170D]">Delete user?</h3>
             <p className="mt-2 text-sm text-[#3B170D]/70">
               Delete <span className="font-bold">{deleting?.userId?.firstName} {deleting?.userId?.lastName}</span> ?
             </p>
 
-            <div className="mt-4 flex justify-end gap-2">
-              <button type="button" disabled={deletingLoading} className="rounded-xl border px-4 py-2" onClick={() => setConfirmOpen(false)}>Cancel</button>
-              <button type="button" disabled={deletingLoading} className="rounded-xl bg-red-600 px-4 py-2 text-white font-bold" onClick={confirmDelete}>
+            <div className="mt-4 flex flex-col-reverse sm:flex-row justify-end gap-2">
+              <button type="button" disabled={deletingLoading} className="w-full sm:w-auto rounded-xl border px-4 py-2" onClick={() => setConfirmOpen(false)}>Cancel</button>
+              <button type="button" disabled={deletingLoading} className="w-full sm:w-auto rounded-xl bg-red-600 px-4 py-2 text-white font-bold" onClick={confirmDelete}>
                 {deletingLoading ? "Deleting..." : "Delete"}
               </button>
             </div>

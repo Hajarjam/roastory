@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NewProducts = ({ products }) => {
   return (
     <div className="h-full flex flex-col ">
-      <h3 className="md:text-xl font-semibold font-instrument-sans mb-2">New Products</h3>
+      <h3 className="text-lg md:text-xl font-semibold font-instrument-sans mb-2">New Products</h3>
 
       {!products || products.length === 0 ? (
         <div className="bg-peach px-3 py-2 rounded text-sm text-peach h-full flex items-center">

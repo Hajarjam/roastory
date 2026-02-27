@@ -2,17 +2,9 @@ import { Search } from "lucide-react";
 
 export default function SearchBar({ placeholder = "Search...", value, onChange }) {
   return (
-    <div style={{ position: "relative", width: "100%", maxWidth: "320px" }}>
+    <div className="relative w-full sm:max-w-xs md:max-w-sm">
       <Search
-        style={{
-          pointerEvents: "none",
-          position: "absolute",
-          left: "14px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          color: "#9D8E83",
-          zIndex: 2,
-        }}
+        className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9D8E83] z-[2]"
         size={18}
       />
       <input

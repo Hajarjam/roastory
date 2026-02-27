@@ -42,10 +42,10 @@ const ClientProfile = () => {
   }
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-peach-light text-brown pt-8">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 pb-6">
+    <div className="flex flex-col w-full min-h-screen bg-peach-light text-brown pt-6 sm:pt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 sm:px-6 pb-6">
         <div className="lg:col-span-2 space-y-3">
-          <h1 className="md:text-2xl font-semibold font-instrument-sans mb-1">
+          <h1 className="text-xl md:text-2xl font-semibold font-instrument-sans mb-1">
           Profile
           </h1>
 
@@ -70,8 +70,8 @@ const ClientProfile = () => {
             <PasswordForm onUpdatePassword={updatePassword} saving={saving} />
         </div>
 
-          <section className="bg-peach/40 text-brown rounded-lg shadow-md p-6 h-fit mt-10">
-            <h2 className="md:text-xl font-semibold font-instrument-sans mb-2">
+          <section className="bg-peach/40 text-brown rounded-lg shadow-md p-4 sm:p-6 h-fit mt-4 lg:mt-10">
+            <h2 className="text-lg md:text-xl font-semibold font-instrument-sans mb-2">
               Account Actions
             </h2>
             <div className="space-y-3">
@@ -96,18 +96,18 @@ const ClientProfile = () => {
 
         {confirmDeleteOpen && typeof document !== "undefined"
           ? createPortal(
-              <div className="fixed inset-0 z-[9999] bg-black/50 flex items-center justify-center px-4">
-                <div className="w-full max-w-sm rounded-xl bg-[#FFF3EB] text-[#3B170D] p-6 shadow-xl">
-                  <h3 className="text-lg font-semibold">Delete Account</h3>
-                  <p className="mt-2 text-sm text-[#3B170D]/80">
+              <div className="fixed inset-0 z-[9999] bg-black/50 flex items-end sm:items-center justify-center p-0 sm:px-4">
+                <div className="w-full sm:max-w-sm rounded-t-2xl sm:rounded-xl bg-[#FFF3EB] text-[#3B170D] p-5 sm:p-6 shadow-xl min-h-[35vh] sm:min-h-0">
+                  <h3 className="text-base sm:text-lg font-semibold">Delete Account</h3>
+                  <p className="mt-2 text-sm sm:text-base text-[#3B170D]/80">
                     Are you sure you want to delete your account?
                   </p>
-                  <div className="mt-6 flex justify-end gap-3">
+                  <div className="mt-6 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
                     <button
                       type="button"
                       disabled={saving}
                       onClick={closeDeleteModal}
-                      className="px-4 py-2 rounded-lg border border-[#3B170D]/30 hover:bg-[#3B170D]/5 transition"
+                      className="w-full sm:w-auto px-4 py-2.5 rounded-lg border border-[#3B170D]/30 hover:bg-[#3B170D]/5 transition"
                     >
                       Dismiss
                     </button>
@@ -115,7 +115,7 @@ const ClientProfile = () => {
                       type="button"
                       disabled={saving}
                       onClick={handleDeleteAccount}
-                      className="px-4 py-2 rounded-lg bg-[#3B170D] text-[#FFF3EB] hover:bg-[#BB9582] hover:text-[#3B170D] transition"
+                      className="w-full sm:w-auto px-4 py-2.5 rounded-lg bg-[#3B170D] text-[#FFF3EB] hover:bg-[#BB9582] hover:text-[#3B170D] transition"
                     >
                       {saving ? "Deleting..." : "Confirm"}
                     </button>

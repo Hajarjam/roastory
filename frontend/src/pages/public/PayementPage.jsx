@@ -230,14 +230,14 @@ export default function CheckoutPage() {
       <DarkNavbar />
       <div className="min-h-screen py-20 bg-peach-light font-sans text-gray-800">
         {/* Main content */}
-        <main className="container mx-auto  sm:px-6 lg:px-8 px-10 py-6 grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 max-w-5xl">
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_360px] gap-6 lg:gap-8 max-w-6xl">
           {/* Left */}
           <div className="flex flex-col gap-6">
             {/* Delivery */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-xl font-bold mb-5">Delivery</h2>
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl font-bold mb-5">Delivery</h2>
 
-              <div className="grid grid-cols-2 gap-3 mb-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                 <input
                   name="firstName"
                   placeholder="First name"
@@ -278,7 +278,7 @@ export default function CheckoutPage() {
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 mb-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                 <input
                   name="city"
                   placeholder="City"
@@ -293,14 +293,14 @@ export default function CheckoutPage() {
                 />
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <select
                   name="phoneCode"
                   value={form.phoneCode || "+212"}
                   onChange={(e) =>
                     setForm((prev) => ({ ...prev, phoneCode: e.target.value }))
                   }
-                  className="w-28 border border-gray-200 rounded-md px-2 py-2.5 text-sm bg-white"
+                  className="w-full sm:w-28 border border-gray-200 rounded-md px-2 py-2.5 text-sm bg-white"
                 >
                   <option value="+212">🇲🇦 +212</option>
                   <option value="+33">🇫🇷 +33</option>
@@ -328,11 +328,11 @@ export default function CheckoutPage() {
             </div>
 
             {/* Payment */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-xl font-bold mb-5">Payment Method</h2>
+            <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl font-bold mb-5">Payment Method</h2>
 
               {/* Card type selector */}
-              <div className="flex gap-3 mb-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
                 <button
                   onClick={() => setCardType("visa")}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all text-sm font-medium ${
@@ -387,7 +387,7 @@ export default function CheckoutPage() {
                 onChange={handleChange}
               />
 
-              <div className="flex gap-4 mb-4">
+              <div className="flex flex-col sm:flex-row gap-4 mb-4">
                 <div className="flex-1">
                   <label className="block text-sm font-medium mb-1">
                     Expiration Date
@@ -424,8 +424,8 @@ export default function CheckoutPage() {
 
           {/* Right - Order Summary */}
           <div>
-            <div className="bg-white rounded-xl shadow-sm p-5">
-              <h2 className="text-xl font-bold mb-4">Order Summary</h2>
+            <div className="bg-white rounded-xl shadow-sm p-5 xl:sticky xl:top-24">
+              <h2 className="text-lg sm:text-xl font-bold mb-4">Order Summary</h2>
               <input
                 type="text"
                 placeholder="Enter coupon code here"

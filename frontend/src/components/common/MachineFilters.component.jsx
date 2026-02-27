@@ -143,11 +143,9 @@ export default function MachineFilters({ machines = [], onApply }) {
       className="
         shadow-md
         w-full
-        sm:w-[85%]
-        md:w-[300px]
-        lg:w-[320px]
+        lg:max-w-[320px]
         h-fit
-        p-3 sm:p-4
+        p-4
         bg-white
         mx-auto
         rounded-md

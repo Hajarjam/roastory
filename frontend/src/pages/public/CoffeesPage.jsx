@@ -135,26 +135,26 @@ export default function CoffeesPage() {
   return (
     <>
       <PeachLayout>
-        <div className="max-w-7xl mx-auto px-4 md:px-10 pt-2 md:pt-3">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 pt-2 md:pt-3">
           <Breadcrumb compact />
         </div>
 
         <div className="text-center pt-8 md:pt-10 pb-8 px-4">
-          <h1 className="font-instrument-serif text-brown text-5xl mb-4">
+          <h1 className="font-instrument-serif text-brown text-3xl sm:text-4xl md:text-5xl mb-4">
             Our Coffees
           </h1>
-          <p className="font-instrument-sans text-charcoal text-base leading-relaxed">
+          <p className="font-instrument-sans text-charcoal text-sm sm:text-base md:text-lg leading-relaxed">
             Choose from a wide variety of coffee from the top roasters in the US.
             <br />
             All our specialty coffee is roasted to order and shipped fresh to your door.
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 md:px-10 flex justify-end items-center gap-3 mb-3">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 flex justify-end items-center gap-3 mb-3">
           <select
             value={sortOption}
             onChange={handleSortChange}
-            className="text-sm border border-gray-300 rounded-md px-3 py-2 bg-white"
+            className="w-full sm:w-auto text-sm border border-gray-300 rounded-md px-3 py-2 bg-white"
           >
             <option value="">Sort by</option>
             <option value="price-low-high">Price: Low to High</option>
@@ -166,7 +166,7 @@ export default function CoffeesPage() {
           </select>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 md:px-10 pb-16 flex flex-col lg:flex-row gap-8 items-start">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 pb-16 flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
           <Filters coffees={coffees} onApply={handleApplyFilters} />
 
           <section className="flex flex-col flex-1">

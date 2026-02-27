@@ -8,7 +8,7 @@ const SubHistoryPage = () => {
   return (
     <div className="min-h-screen bg-peach-light">
       <MenuUser sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <div className="lg:ml-72">
+      <div className="px-3 sm:px-4 lg:px-0 lg:ml-72">
         <SubscriptionHistory />
       </div>
     </div>

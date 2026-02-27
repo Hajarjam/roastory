@@ -58,9 +58,9 @@ export default function Subscriptions() {
   }, [subscriptions]);
 
   return (
-    <section>
+    <section className="px-4 sm:px-6 lg:px-8">
       <div className="mb-4">
-        <h2 className="text-2xl font-instrument-serif">Subscriptions</h2>
+        <h2 className="text-xl sm:text-2xl font-instrument-serif">Subscriptions</h2>
         <p className="text-sm text-[#3B170D]/70">
           {subscriptions.length} total | {counts.active} active | {counts.cancelled} cancelled
         </p>

@@ -3,8 +3,8 @@ import SubCard from "../../common/user/SubCard";
 const SubscriptionSection = ({ title, countLabel, subscriptions }) => {
   return (
     <section className="mb-8">
-      <div className="flex items-center justify-between mb-3">
-        <h2 className="text-2xl font-instrument-serif">{title}</h2>
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <h2 className="text-xl sm:text-2xl font-instrument-serif">{title}</h2>
         <span className="text-sm text-peach">
           {subscriptions.length} {countLabel}
         </span>

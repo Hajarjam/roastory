@@ -35,12 +35,12 @@ const DeliveryCalendar = ({ deliveryDates = [] }) => {
   const next = () => setCurrent(new Date(year, month + 1, 1));
 
   return (
-    <div className="bg-transparent border-2 border-brown rounded-xl p-6 h-full flex flex-col max-h-[600px]">
-      <h2 className="flex justify-center items-center text-xl font-instrument-serif text-brown mb-4">
+    <div className="bg-transparent border-2 border-brown rounded-xl p-4 sm:p-6 h-full flex flex-col max-h-[600px]">
+      <h2 className="flex justify-center items-center text-lg sm:text-xl font-instrument-serif text-brown mb-4">
         Deliveries
       </h2>
 
-      <div className="bg-peach/50 rounded-xl p-4 flex-1 max-h-[500px]">
+      <div className="bg-peach/50 rounded-xl p-3 sm:p-4 flex-1 max-h-[500px]">
         <div className="flex items-center justify-between mb-3">
           <button
             onClick={prev}
@@ -48,7 +48,7 @@ const DeliveryCalendar = ({ deliveryDates = [] }) => {
           >
             {"<"}
           </button>
-          <span className="font-serif text-brown text-sm tracking-widest">
+          <span className="font-serif text-brown text-xs sm:text-sm tracking-widest">
             {monthName}
           </span>
           <button
@@ -61,7 +61,7 @@ const DeliveryCalendar = ({ deliveryDates = [] }) => {
 
         <div className="grid grid-cols-7 text-center mb-1">
           {["M", "T", "W", "T", "F", "S", "S"].map((d, i) => (
-            <div key={i} className="text-xs font-semibold text-brown py-1">
+            <div key={i} className="text-[11px] sm:text-xs font-semibold text-brown py-1">
               {d}
             </div>
           ))}
@@ -82,7 +82,7 @@ const DeliveryCalendar = ({ deliveryDates = [] }) => {
               <div
                 key={day}
                 className={`
-                  aspect-square flex items-center justify-center rounded-full text-xs cursor-pointer transition-colors
+                  aspect-square flex items-center justify-center rounded-full text-[11px] sm:text-xs cursor-pointer transition-colors
                   ${isDelivery ? "bg-charcoal text-peach font-bold" : ""}
                   ${isToday && !isDelivery ? "ring-2 ring-charcoal" : ""}
                   ${!isDelivery ? "hover:bg-brown hover:text-peach text-charcoal" : "hover:bg-charcoal"}

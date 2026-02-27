@@ -118,8 +118,8 @@ export default function OrderConfirmed() {
   <>
     <DarkNavbar />
 
-    <div className="bg-[#fdfaf7] min-h-[calc(100vh-64px)] flex  pt-16">
-      <main className="max-w-4xl w-full mx-auto px-4 sm:px-6 py-6">
+    <div className="bg-[#fdfaf7] min-h-[calc(100vh-64px)] flex pt-16">
+      <main className="max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           {/* Header compact */}
           <div className="pt-8 pb-6 px-6 lg:px-10 text-center">
@@ -128,7 +128,7 @@ export default function OrderConfirmed() {
               alt="Checkmark"
               className="w-14 h-14 mx-auto mb-4"
             />
-            <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
               Order Confirmed!
             </h1>
             <p className="text-sm lg:text-base text-gray-600 max-w-xl mx-auto leading-relaxed">
@@ -144,7 +144,7 @@ export default function OrderConfirmed() {
               </h2>
 
               <div className="bg-[#F3F3F3] rounded-xl p-4 border border-gray-200">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3 text-sm md:text-base">
                   <div>
                     <p className="text-gray-500">Name</p>
                     <p className="font-medium">{fullName}</p>
@@ -232,7 +232,7 @@ export default function OrderConfirmed() {
         <div className="mt-6 text-center">
           <Link
             to="/coffees"
-            className="bg-[#3d2b1f] text-white inline-block px-7 py-3 rounded-full font-medium text-sm hover:bg-[#2a1e16] transition"
+            className="bg-[#3d2b1f] text-white inline-block w-full sm:w-auto px-7 py-3 rounded-full font-medium text-sm hover:bg-[#2a1e16] transition"
           >
             Continue Shopping →
           </Link>

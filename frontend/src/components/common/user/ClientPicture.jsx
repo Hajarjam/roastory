@@ -143,8 +143,8 @@ const ClientPicture = ({ profile, onUploadAvatar, uploadingAvatar = false }) => 
   };
 
   return (
-    <section className="bg-peach/40 text-brown rounded-lg shadow-md p-6">
-      <h2 className="md:text-xl font-semibold font-instrument-sans mb-4">
+    <section className="bg-peach/40 text-brown rounded-lg shadow-md p-4 sm:p-6">
+      <h2 className="text-lg md:text-xl font-semibold font-instrument-sans mb-4">
         Profile Overview
       </h2>
 
@@ -174,7 +174,7 @@ const ClientPicture = ({ profile, onUploadAvatar, uploadingAvatar = false }) => 
                     uploadingAvatar
                       ? "bg-brown/50 text-white cursor-not-allowed"
                       : "bg-brown text-white hover:bg-charcoal cursor-pointer"
-                  }`}
+                  } w-full justify-center`}
                 >
                   <FaCamera className="w-4 h-4" />
                   {uploadingAvatar ? "Uploading..." : "Upload Photo"}

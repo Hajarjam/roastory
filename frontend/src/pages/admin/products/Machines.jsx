@@ -297,8 +297,9 @@ export default function Machines() {
       </div>
 
       {/* Desktop Table */}
-      <div className="hidden sm:block mx-8 mt-4 overflow-hidden rounded-2xl border border-[#EADFD7] bg-white shadow-sm">
-        <table className="w-full text-left">
+      <div className="hidden sm:block mx-4 sm:mx-8 mt-4 overflow-hidden rounded-2xl border border-[#EADFD7] bg-white shadow-sm">
+        <div className="overflow-x-auto">
+        <table className="min-w-[980px] w-full text-left">
           <thead className="bg-[#3B170D] text-white">
             <tr className="text-xs font-extrabold">
               <th className="px-4 py-3"># ID</th>
@@ -350,12 +351,13 @@ export default function Machines() {
             )}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Add/Edit Modal */}
       {open && (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/35 p-4" onMouseDown={()=>setOpen(false)}>
-          <div className="w-full max-w-lg rounded-2xl border border-[#EADFD7] bg-white p-5 shadow-xl" onMouseDown={(e)=>e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/35 p-0 sm:p-4" onMouseDown={()=>setOpen(false)}>
+          <div className="w-full sm:max-w-lg rounded-t-2xl sm:rounded-2xl border border-[#EADFD7] bg-white p-4 sm:p-5 shadow-xl max-h-[100vh] sm:max-h-[90vh] overflow-y-auto" onMouseDown={(e)=>e.stopPropagation()}>
             <h2 className="text-lg font-extrabold">{editing ? "Edit machine" : "Add machine"}</h2>
             <form onSubmit={save} className="mt-4 grid gap-3">
               <input className="rounded-xl border border-[#E6D8CF] px-3 py-2 outline-none focus:ring-2 focus:ring-[#3B170D]/20" placeholder="Machine name" value={form.name} onChange={(e)=>setForm(f=>({...f,name:e.target.value}))} required/>
@@ -374,7 +376,7 @@ export default function Machines() {
               />
 
               <label className="text-sm font-bold">Coffee types supported:</label>
-              <div className="flex gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {["beans", "ground"].map((type) => (
                   <label key={type} className="flex items-center gap-1">
                     <input
@@ -429,17 +431,17 @@ export default function Machines() {
                 }
               />
 
-              <div className="mt-4 flex justify-end gap-2">
+              <div className="mt-4 flex flex-col-reverse sm:flex-row justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="rounded-xl border border-[#EADFD7] px-4 py-2 text-sm hover:bg-[#EADFD7]/50"
+                  className="w-full sm:w-auto rounded-xl border border-[#EADFD7] px-4 py-2 text-sm hover:bg-[#EADFD7]/50"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="rounded-xl bg-[#3B170D] px-4 py-2 text-sm font-bold text-white hover:opacity-90"
+                  className="w-full sm:w-auto rounded-xl bg-[#3B170D] px-4 py-2 text-sm font-bold text-white hover:opacity-90"
                 >
                   {editing ? "Save Changes" : "Add Machine"}
                 </button>
@@ -451,17 +453,17 @@ export default function Machines() {
 
       {/* Delete Confirmation Modal */}
       {confirmOpen && (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/35 p-4" onMouseDown={()=>setConfirmOpen(false)}>
-          <div className="w-full max-w-md rounded-2xl border border-[#EADFD7] bg-white p-5 shadow-xl" onMouseDown={(e)=>e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/35 p-0 sm:p-4" onMouseDown={()=>setConfirmOpen(false)}>
+          <div className="w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl border border-[#EADFD7] bg-white p-4 sm:p-5 shadow-xl" onMouseDown={(e)=>e.stopPropagation()}>
             <h2 className="text-lg font-extrabold">Confirm Delete</h2>
             <p className="mt-2 text-sm text-[#3B170D]/70">
               Are you sure you want to delete <strong>{deleting?.name}</strong>?
             </p>
-            <div className="mt-4 flex justify-end gap-2">
+            <div className="mt-4 flex flex-col-reverse sm:flex-row justify-end gap-2">
               <button
                 type="button"
                 onClick={() => setConfirmOpen(false)}
-                className="rounded-xl border border-[#EADFD7] px-4 py-2 text-sm hover:bg-[#EADFD7]/50"
+                className="w-full sm:w-auto rounded-xl border border-[#EADFD7] px-4 py-2 text-sm hover:bg-[#EADFD7]/50"
               >
                 Cancel
               </button>
@@ -469,7 +471,7 @@ export default function Machines() {
                 type="button"
                 onClick={confirmDelete}
                 disabled={deletingLoading}
-                className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold text-white hover:opacity-90 disabled:opacity-50"
+                className="w-full sm:w-auto rounded-xl bg-red-600 px-4 py-2 text-sm font-bold text-white hover:opacity-90 disabled:opacity-50"
               >
                 {deletingLoading ? "Deleting..." : "Delete"}
               </button>

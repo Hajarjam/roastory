@@ -93,8 +93,8 @@ export default function SubscriptionPage() {
         <Breadcrumb />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-8 md:py-10">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 lg:gap-10">
           {/* LEFT — BIG IMAGE */}
           <div>
             <div className="rounded-lg overflow-hidden">
@@ -109,7 +109,7 @@ export default function SubscriptionPage() {
           {/* CENTER — DETAILS */}
           <div className="space-y-8">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold font-instrument-serif text-charcoal mb-3">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-instrument-serif text-charcoal mb-3">
                 {selectedRoast.title} Subscription
               </h1>
 
@@ -148,10 +148,10 @@ export default function SubscriptionPage() {
                 Select Your Grind
               </label>
 
-              <div className="flex gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <button
                   onClick={() => setSelectedGrind("whole-bean")}
-                  className={`flex-1 px-4 py-2.5 rounded-lg border flex items-center justify-center gap-2
+                  className={`w-full px-4 py-2.5 rounded-lg border flex items-center justify-center gap-2
                     ${
                       selectedGrind === "whole-bean"
                         ? "border-charcoal bg-white text-charcoal"
@@ -164,7 +164,7 @@ export default function SubscriptionPage() {
 
                 <button
                   onClick={() => setSelectedGrind("ground")}
-                  className={`flex-1 px-4 py-2.5 rounded-lg border flex items-center justify-center gap-2
+                  className={`w-full px-4 py-2.5 rounded-lg border flex items-center justify-center gap-2
                     ${
                       selectedGrind === "ground"
                         ? "border-charcoal bg-white text-charcoal"
@@ -178,7 +178,7 @@ export default function SubscriptionPage() {
           </div>
 
           {/* RIGHT — SUBSCRIPTION CARD */}
-          <div className="bg-white rounded-lg border border-peach p-5 h-fit mt-10">
+          <div className="bg-white rounded-lg border border-peach p-5 h-fit mt-0 xl:mt-10">
             <div className="space-y-4">
               <label className="flex items-center justify-between">
                 <span className="text-sm">Subscribe</span>
@@ -243,7 +243,7 @@ function RoastCard({ title, subtitle, description, image, active, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`w-full text-left border rounded-xl p-4 flex gap-4 transition-all
+      className={`w-full text-left border rounded-xl p-4 flex flex-col sm:flex-row gap-4 transition-all
         ${
           active
             ? "border-charcoal bg-white shadow-sm"
@@ -253,7 +253,7 @@ function RoastCard({ title, subtitle, description, image, active, onClick }) {
       <img
         src={image}
         alt={title}
-        className="w-20 h-20 object-contain flex-shrink-0"
+        className="w-16 h-16 sm:w-20 sm:h-20 object-contain flex-shrink-0"
       />
 
       <div className="space-y-1">
