@@ -3,7 +3,7 @@ import React from "react";
 const SubscriptionSummaryCard = ({ item, compact = false }) => {
   return (
     <div className="bg-peach/20 p-4 rounded shadow">
-      <h4 className="font-medium">{item.coffee?.name || "Coffee Subscription"}</h4>
+      <h4 className="font-medium text-sm sm:text-base">{item.coffee?.name || "Coffee Subscription"}</h4>
       {compact ? (
         <p className="text-sm text-peach-light/80">
           {item.plan || "-"} | {item.status || "-"}

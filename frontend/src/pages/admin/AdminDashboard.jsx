@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../api/api";
 import {
   LineChart,
   Line,
@@ -30,49 +30,49 @@ export default function AdminDashboard() {
 
   // Fetch dashboard stats
   useEffect(() => {
-    axios
-      .get("http://localhost:5001/api/dashboard")
+    api
+      .get("/dashboard")
       .then((res) => setStats(res.data))
       .catch(console.error);
   }, []);
 
   // Fetch sales data based on period
   useEffect(() => {
-    axios
-      .get(`http://localhost:5001/api/dashboard/sales/${period}`)
+    api
+      .get(`/dashboard/sales/${period}`)
       .then((res) => setSalesData(res.data))
       .catch(console.error);
   }, [period]);
 
   // Fetch best-selling coffees
   useEffect(() => {
-    axios
-      .get("http://localhost:5001/api/dashboard/best-sellers")
+    api
+      .get("/dashboard/best-sellers")
       .then((res) => setBestCoffees(res.data))
       .catch(console.error);
   }, []);
 
   // Fetch best-selling machines
   useEffect(() => {
-    axios
-      .get("http://localhost:5001/api/dashboard/best-selling-machines")
+    api
+      .get("/dashboard/best-selling-machines")
       .then((res) => setBestMachines(res.data))
       .catch(console.error);
   }, []);
 
   const fetchCustomRange = () => {
     if (!from || !to) return alert("Please select both dates");
-    axios
-      .get(`http://localhost:5001/api/dashboard/sales/range?from=${from}&to=${to}`)
-      .then((res) => setSalesData(res.data.data))
+    api
+      .get(`/dashboard/sales/range?from=${from}&to=${to}`)
+      .then((res) => setSalesData(res.data))
       .catch(console.error);
   };
 
   const xKey = period === "year" ? "month" : "day";
 
   return (
-    <div className="flex flex-col px-6 py-4 min-h-screen">
-      <h1 className="text-2xl font-semibold text-gray-800 mb-8">Dashboard Statistics</h1>
+    <div className="flex flex-col px-4 sm:px-6 lg:px-8 py-4 min-h-screen">
+      <h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 mb-6 sm:mb-8">Dashboard Statistics</h1>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
@@ -105,16 +105,16 @@ export default function AdminDashboard() {
       </div>
 
       {/* Sales Overview */}
-      <div className="bg-white shadow-md rounded-lg p-6 mb-10">
+      <div className="bg-white shadow-md rounded-lg p-4 sm:p-6 mb-10">
         <div className="flex flex-wrap items-center justify-between mb-4 gap-4">
-          <h2 className="text-lg font-semibold text-gray-800">Sales Overview</h2>
+          <h2 className="text-base sm:text-lg font-semibold text-gray-800">Sales Overview</h2>
 
-          <div className="flex rounded-lg border border-gray-300 overflow-hidden">
+          <div className="flex flex-wrap rounded-lg border border-gray-300 overflow-hidden w-full sm:w-auto">
             {["week", "month", "year"].map((p) => (
               <button
                 key={p}
                 onClick={() => setPeriod(p)}
-                className={`px-4 py-2 transition-colors duration-200 ${
+                className={`flex-1 sm:flex-none px-4 py-2 text-sm sm:text-base transition-colors duration-200 ${
                   period === p
                     ? "bg-brown text-white"
                     : "bg-white text-gray-900 hover:bg-brown hover:text-white"
@@ -126,7 +126,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="h-64 mb-4">
+        <div className="h-60 sm:h-64 mb-4">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={salesData}>
               <CartesianGrid strokeDasharray="3 3" />
@@ -138,24 +138,24 @@ export default function AdminDashboard() {
           </ResponsiveContainer>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
+        <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr_auto_1fr_auto] items-center gap-2 text-sm text-gray-600">
           <span>Custom Range:</span>
           <input
             type="date"
             value={from}
             onChange={(e) => setFrom(e.target.value)}
-            className="px-2 py-1 border rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-brown"
+            className="w-full px-2 py-1 border rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-brown"
           />
-          <span>to</span>
+          <span className="hidden sm:inline">to</span>
           <input
             type="date"
             value={to}
             onChange={(e) => setTo(e.target.value)}
-            className="px-2 py-1 border rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-brown"
+            className="w-full px-2 py-1 border rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-brown"
           />
           <button
             onClick={fetchCustomRange}
-            className="px-3 py-1 bg-brown text-white rounded shadow hover:bg-dark-brown text-center"
+            className="w-full sm:w-auto px-3 py-1 bg-brown text-white rounded shadow hover:bg-dark-brown text-center"
           >
             Apply
           </button>

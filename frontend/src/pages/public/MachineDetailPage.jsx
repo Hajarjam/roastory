@@ -82,7 +82,7 @@ export default function MachineDetailPage() {
         {" "}
         <Breadcrumb />
       </div>
-      <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8 py-4 md:py-6 pt-24 md:pt-5">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6 pt-20 sm:pt-24 md:pt-6">
         {loading && (
           <div className="flex justify-center items-center min-h-[400px]">
             <div className="text-center">
@@ -105,7 +105,7 @@ export default function MachineDetailPage() {
         {product && (
           <div>
             {/* Main Product Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[360px_1fr_300px] gap-5 md:gap-6 mb-8 md:mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] gap-5 md:gap-6 mb-8 md:mb-12">
               {/* Column 1: Product Image */}
               <div>
                 <div className="rounded-lg overflow-hidden">
@@ -116,7 +116,7 @@ export default function MachineDetailPage() {
                         : "/assets/columbianbrewcoffee.jpg"
                     }
                     alt={product.name}
-                    className="w-full h-auto max-h-[250px] md:max-h-[400px] object-cover"
+                    className="w-full h-auto max-h-[260px] sm:max-h-[360px] md:max-h-[420px] object-cover"
                   />
                 </div>
               </div>
@@ -162,14 +162,14 @@ export default function MachineDetailPage() {
                     <span className="text-sm font-semibold text-charcoal">
                       Price:
                     </span>
-                    <span className="text-lg font-bold text-charcoal">
+                    <span className="text-base sm:text-lg font-bold text-charcoal">
                       ${product.price.toFixed(2)}
                     </span>
                   </div>
 
                   <button
                     onClick={handleAddToCart}
-                    className="w-full bg-charcoal text-white text-xs md:text-sm font-medium py-2 md:py-2.5 px-3 md:px-4 rounded-lg
+                    className="w-full bg-charcoal text-white text-sm md:text-base font-medium py-2.5 md:py-3 px-3 md:px-4 rounded-lg
                                    hover:bg-brown transition-colors mt-3 md:mt-4 font-instrument-sans"
                   >
                     Add to Cart

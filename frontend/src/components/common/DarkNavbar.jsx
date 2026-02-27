@@ -20,24 +20,24 @@ export default function DarkNavbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 text-black px-4 sm:px-8 py-2 flex items-center">
+    <nav className="fixed top-0 left-0 w-full z-50 text-black px-4 sm:px-8 lg:px-12 py-2.5 flex items-center">
 
       {/* ── 3-column desktop layout ── */}
 
       {/* LEFT — Logo */}
       <div className="flex-1 flex items-center">
-        <div onClick={() => navigate("/")} className="w-12 h-16 cursor-pointer flex-shrink-0">
+        <div onClick={() => navigate("/")} className="w-10 h-14 sm:w-12 sm:h-16 cursor-pointer flex-shrink-0">
           <img src="/assets/logo2.png" alt="logo" className="w-full h-full object-contain" />
         </div>
       </div>
 
       {/* CENTER — Search bar */}
-      <div className="hidden md:flex flex-1 justify-center">
+      <div className="hidden md:flex flex-1 justify-center px-3">
         <NavbarSearch />
       </div>
 
       {/* RIGHT — Nav links + auth buttons */}
-      <div className="hidden md:flex flex-1 items-center justify-end gap-6 lg:gap-8">
+      <div className="hidden md:flex flex-1 items-center justify-end gap-4 lg:gap-6">
         {menuItems.map((item) => (
           <div key={item.name} className="hover:text-peach cursor-pointer font-instrument-sans transition">
             {item.link.startsWith("/") ? (
@@ -101,7 +101,7 @@ export default function DarkNavbar() {
 
       {/* ── Mobile: hamburger ── */}
       <div className="md:hidden ml-auto">
-        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="focus:outline-none">
+        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="focus:outline-none rounded p-1" aria-label="Toggle navigation menu">
           <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -110,9 +110,9 @@ export default function DarkNavbar() {
 
       {/* ── Mobile menu dropdown ── */}
       {mobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-peach-light/95 flex flex-col items-center gap-4 py-4 md:hidden">
+        <div className="absolute top-full left-0 w-full bg-peach-light/95 backdrop-blur px-4 py-4 flex flex-col items-center gap-3 md:hidden">
           {/* Mobile search */}
-          <div className="w-full px-6">
+          <div className="w-full max-w-md">
             <NavbarSearch onNavigate={() => setMobileMenuOpen(false)} />
           </div>
           {menuItems.map((item) => (
@@ -126,10 +126,10 @@ export default function DarkNavbar() {
           ))}
           {!isAuthenticated ? (
             <>
-              <Link to="/login" className="w-3/4 px-4 py-2 bg-brown text-white rounded-lg hover:bg-peach-dark transition text-center">
+              <Link to="/login" className="w-full max-w-xs px-4 py-2.5 bg-brown text-white rounded-lg hover:bg-peach-dark transition text-center">
                 Log In
               </Link>
-              <Link to="/register" className="w-3/4 px-4 py-2 border border-brown text-brown rounded-lg hover:bg-brown hover:text-white transition text-center">
+              <Link to="/register" className="w-full max-w-xs px-4 py-2.5 border border-brown text-brown rounded-lg hover:bg-brown hover:text-white transition text-center">
                 Sign Up
               </Link>
             </>
@@ -138,12 +138,12 @@ export default function DarkNavbar() {
               <LogoutButton
                 redirectTo="/"
                 onBeforeOpen={() => setMobileMenuOpen(false)}
-                className="w-3/4 px-4 py-2 bg-brown text-white rounded-lg hover:bg-peach-dark transition text-center"
+                className="w-full max-w-xs px-4 py-2.5 bg-brown text-white rounded-lg hover:bg-peach-dark transition text-center"
               />
-              <Link to="/client/dashboard" className="w-3/4 px-4 py-2 bg-brown text-white rounded-lg hover:bg-peach-dark transition text-center">
+              <Link to="/client/dashboard" className="w-full max-w-xs px-4 py-2.5 bg-brown text-white rounded-lg hover:bg-peach-dark transition text-center">
                 Dashboard
               </Link>
-              <Link to="/client/cart" className="w-3/4 px-4 py-2 bg-brown text-white rounded-lg hover:bg-peach-dark transition text-center">
+              <Link to="/client/cart" className="w-full max-w-xs px-4 py-2.5 bg-brown text-white rounded-lg hover:bg-peach-dark transition text-center">
                 Cart
               </Link>
             </>

@@ -47,9 +47,9 @@ export default function ActivateAccountPage() {
   }, [token]);
 
   return (
-    <div className="min-h-screen bg-peach-light flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-sm p-6">
-        <h1 className="font-instrument-serif text-3xl text-brown mb-3">
+    <div className="min-h-screen bg-peach-light flex items-center justify-center px-4 sm:px-6">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-sm p-5 sm:p-6">
+        <h1 className="font-instrument-serif text-2xl sm:text-3xl text-brown mb-3">
           Account Activation
         </h1>
         {status === "loading" && (

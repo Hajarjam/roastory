@@ -151,7 +151,7 @@ export default function CoffeeDetailPage() {
       <div className="py-2 px-4 md:px-8 lg:px-12 flex flex-row">
         <Breadcrumb />
       </div>
-      <div className="max-w-[1200px]  mx-auto   md:px-6 lg:px-8 py-4 md:py-6 pt-6 md:pt-5">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6 pt-6 md:pt-5">
         {/* Loading state */}
         {loading && (
           <div className="flex justify-center items-center min-h-[400px]">
@@ -173,22 +173,22 @@ export default function CoffeeDetailPage() {
         {product && (
           <div>
             {/* Main product section */}
-            <div className="flex gap-12 md:gap-10 mb-8 md:mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-6 lg:gap-10 mb-8 md:mb-12">
               {/* Column 1: Main Image */}
-              <div>
+              <div className="w-full">
                 <div className="rounded-lg overflow-hidden">
                   <img
                     src={getMainImage()}
                     alt={product.name}
-                    className="w-full h-auto max-h-[250px] md:max-h-[400px] object-cover"
+                    className="w-full h-auto max-h-[260px] sm:max-h-[360px] lg:max-h-[460px] object-cover"
                   />
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between">
+                <div className="flex flex-col xl:flex-row xl:items-start gap-6 xl:gap-8">
                   {/* Column 2: Details (Name, Description, Options) */}
-                  <div className="space-y-6">
+                  <div className="space-y-6 flex-1">
                     {/* Product name & description */}
                     <div>
                       <h1 className="text-2xl md:text-4xl font-bold font-instrument-serif text-charcoal mb-2 md:mb-3">
@@ -229,10 +229,10 @@ export default function CoffeeDetailPage() {
                       <label className="block text-xs md:text-sm font-bold text-charcoal mb-1 md:mb-2 font-instrument-sans">
                         Select Your Grind
                       </label>
-                      <div className="flex w-96">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md">
                         <button
                           onClick={() => setSelectedGrind("whole-bean")}
-                          className={`flex-1 px-2 md:px-8 py-8 md:py-2.5 rounded-lg border flex items-center text-center justify-center gap-1 md:gap-2 text-xs md:text-sm transition-colors ${
+                          className={`w-full px-2 md:px-8 py-2.5 rounded-lg border flex items-center text-center justify-center gap-1 md:gap-2 text-xs md:text-sm transition-colors ${
                             selectedGrind === "whole-bean"
                               ? "border-charcoal bg-white text-charcoal"
                               : "border-transparent bg-transparent text-dark-brown hover:border-charcoal"
@@ -244,7 +244,7 @@ export default function CoffeeDetailPage() {
                         </button>
                         <button
                           onClick={() => setSelectedGrind("ground")}
-                          className={`flex-1 px-2 ml-4 md:px-8 py-2 md:py-2.5 rounded-lg border flex items-center justify-center gap-1 md:gap-2 text-xs md:text-sm transition-colors ${
+                          className={`w-full px-2 md:px-8 py-2.5 rounded-lg border flex items-center justify-center gap-1 md:gap-2 text-xs md:text-sm transition-colors ${
                             selectedGrind === "ground"
                               ? "border-charcoal bg-white text-charcoal"
                               : "border-transparent bg-transparent text-dark-brown hover:border-charcoal"
@@ -301,7 +301,7 @@ export default function CoffeeDetailPage() {
                   </div>
 
                   {/* Column 3: Purchase Card */}
-                  <div className="bg-white rounded-lg border border-peach w-64 p-4 md:p-5 h-fit mt-8 md:mt-10 lg:mt-20 col-span-1 md:col-span-2 lg:col-span-1">
+                  <div className="bg-white rounded-lg border border-peach w-full xl:w-72 p-4 md:p-5 h-fit mt-0 xl:mt-2">
                     <div className="space-y-4">
                       {/* One-time */}
                       <label className="flex items-center justify-between cursor-pointer">
@@ -396,12 +396,12 @@ export default function CoffeeDetailPage() {
                     </div>
                   </div>
                 </div>
-                <div className="w-96 mx-auto mb-2 md:mt-10 ">
+                <div className="w-full max-w-3xl mx-auto mb-2 md:mt-10 ">
                   <hr className="border-brown "></hr>
                 </div>
                 {/* Product Information Section */}
                 <div className="px-2 md:px-6 py-2">
-                  <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-32">
+                  <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-10 lg:gap-16">
                     {/* Flavor Profile */}
                     <div className="flex-1 flex flex-col items-center mb-8 md:mb-0">
                       <div className="w-16 md:w-20 h-16 md:h-20 bg-white rounded-full flex items-center justify-center mb-4 md:mb-6 ">

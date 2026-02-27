@@ -47,10 +47,10 @@ const PasswordForm = ({ onUpdatePassword, saving }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-peach/40 text-brown rounded-lg shadow-md p-6 space-y-4"
+      className="bg-peach/40 text-brown rounded-lg shadow-md p-4 sm:p-6 space-y-4"
       noValidate
     >
-      <h2 className="md:text-xl font-semibold font-instrument-sans mb-2">
+      <h2 className="text-lg md:text-xl font-semibold font-instrument-sans mb-2">
         Change Password
       </h2>
 

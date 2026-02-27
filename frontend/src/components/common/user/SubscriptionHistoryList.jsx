@@ -37,15 +37,15 @@ export default function SubscriptionHistoryList({
     ? "text-xs uppercase tracking-wide text-brown/80"
     : "text-xs uppercase tracking-wide";
   const detailsClass = isLight
-    ? "mt-2 grid grid-cols-1 md:grid-cols-4 gap-2 text-sm text-[#3B170D]/85"
+    ? "mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-sm text-[#3B170D]/85"
     : isNewProduct
-    ? "mt-2 grid grid-cols-1 md:grid-cols-4 gap-2 text-sm text-brown/85"
-    : "mt-2 grid grid-cols-1 md:grid-cols-4 gap-2 text-sm text-peach-light/90";
+    ? "mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-sm text-brown/85"
+    : "mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-sm text-peach-light/90";
   const cancelButtonClass = isLight
-    ? "mt-3 px-3 py-1.5 rounded-lg bg-[#3B170D] text-[#FFF3EB] hover:bg-[#BB9582] hover:text-[#3B170D] transition text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+    ? "mt-3 w-full sm:w-auto px-3 py-1.5 rounded-lg bg-[#3B170D] text-[#FFF3EB] hover:bg-[#BB9582] hover:text-[#3B170D] transition text-sm disabled:opacity-60 disabled:cursor-not-allowed"
     : isNewProduct
-    ? "mt-3 px-3 py-1.5 rounded bg-peach-light text-brown hover:bg-white transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
-    : "mt-3 px-3 py-1.5 rounded-lg bg-peach text-brown hover:bg-[#BB9582] hover:text-[#3B170D] transition text-sm disabled:opacity-60 disabled:cursor-not-allowed";
+    ? "mt-3 w-full sm:w-auto px-3 py-1.5 rounded bg-peach-light text-brown hover:bg-white transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed"
+    : "mt-3 w-full sm:w-auto px-3 py-1.5 rounded-lg bg-peach text-brown hover:bg-[#BB9582] hover:text-[#3B170D] transition text-sm disabled:opacity-60 disabled:cursor-not-allowed";
 
   if (loading) {
     return <p className={`text-sm ${mutedTextClass}`}>Loading subscription history...</p>;

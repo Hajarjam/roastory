@@ -164,11 +164,12 @@ export default function Coffees() {
 
   return (
     <>
-      <div className="flex px-9 flex-wrap items-end justify-between gap-2 py-3">
+      <div className="px-4 sm:px-9 py-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <h1 className="text-2xl font-bold">Coffees</h1>
 
-        <div className="flex flex-wrap items-center gap-7">
-          <div className="relative w-full max-w-[200px]">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5 w-full sm:w-auto">
+          <div className="relative w-full sm:w-[220px]">
             <svg
               className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#3B170D]"
               xmlns="http://www.w3.org/2000/svg"
@@ -189,10 +190,10 @@ export default function Coffees() {
             />
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-[#3B170D]">Sort by</span>
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <span className="text-sm text-[#3B170D] whitespace-nowrap">Sort by</span>
             <select
-              className="rounded-xl border border-[#E6D8CF] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#3B170D]/20"
+              className="w-full sm:w-auto rounded-xl border border-[#E6D8CF] bg-white px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#3B170D]/20"
               value={sort}
               onChange={(e) => setSort(e.target.value)}
             >
@@ -207,11 +208,12 @@ export default function Coffees() {
 
           <button
             onClick={openCreate}
-            className="rounded-xl bg-[#3B170D] px-4 py-2 text-sm font-bold text-white hover:opacity-90"
+            className="w-full sm:w-auto rounded-xl bg-[#3B170D] px-4 py-2 text-sm font-bold text-white hover:opacity-90"
             type="button"
           >
             Add New Coffee +
           </button>
+        </div>
         </div>
       </div>
 
@@ -466,11 +468,11 @@ export default function Coffees() {
       {/* Modal Add/Edit */}
       {open && (
         <div
-          className="fixed inset-0 z-50 grid place-items-center bg-black/35 p-4"
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/35 p-0 sm:p-4"
           onMouseDown={() => setOpen(false)}
         >
           <div
-            className="w-full max-w-lg rounded-2xl border border-[#EADFD7] bg-white p-5 shadow-xl"
+            className="w-full sm:max-w-lg rounded-t-2xl sm:rounded-2xl border border-[#EADFD7] bg-white p-4 sm:p-5 shadow-xl max-h-[100vh] sm:max-h-[90vh] overflow-y-auto"
             onMouseDown={(e) => e.stopPropagation()}
           >
             <h2 className="text-lg font-extrabold">
@@ -494,7 +496,7 @@ export default function Coffees() {
                 required
               />
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <input
                   className="rounded-xl border border-[#E6D8CF] px-3 py-2 outline-none focus:ring-2 focus:ring-[#3B170D]/20"
                   placeholder="Price (dhs)"
@@ -563,16 +565,16 @@ export default function Coffees() {
               />
 
 
-              <div className="mt-2 flex justify-end gap-2">
+              <div className="mt-2 flex flex-col-reverse sm:flex-row justify-end gap-2">
                 <button
                   type="button"
-                  className="rounded-xl border border-[#EADFD7] bg-white px-4 py-2 text-sm font-bold hover:bg-[#3B170D]/5"
+                  className="w-full sm:w-auto rounded-xl border border-[#EADFD7] bg-white px-4 py-2 text-sm font-bold hover:bg-[#3B170D]/5"
                   onClick={() => setOpen(false)}
                 >
                   Cancel
                 </button>
                 <button
-                  className="rounded-xl bg-[#3B170D] px-4 py-2 text-sm font-bold text-white hover:opacity-90"
+                  className="w-full sm:w-auto rounded-xl bg-[#3B170D] px-4 py-2 text-sm font-bold text-white hover:opacity-90"
                   type="submit"
                 >
                   Save
@@ -588,11 +590,11 @@ export default function Coffees() {
       {/* ✅ Delete Confirmation Modal (Styled) */}
       {confirmOpen && (
         <div
-          className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4"
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 p-0 sm:p-4"
           onMouseDown={() => !deletingLoading && setConfirmOpen(false)}
         >
           <div
-            className="w-full max-w-md rounded-2xl border border-[#EADFD7] bg-white p-5 shadow-xl"
+            className="w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl border border-[#EADFD7] bg-white p-4 sm:p-5 shadow-xl"
             onMouseDown={(e) => e.stopPropagation()}
           >
             <div className="flex items-start gap-3">
@@ -627,11 +629,11 @@ export default function Coffees() {
               </div>
             </div>
 
-            <div className="mt-5 flex justify-end gap-2">
+            <div className="mt-5 flex flex-col-reverse sm:flex-row justify-end gap-2">
               <button
                 type="button"
                 disabled={deletingLoading}
-                className="rounded-xl border border-[#EADFD7] bg-white px-4 py-2 text-sm font-bold hover:bg-[#3B170D]/5 disabled:opacity-50"
+                className="w-full sm:w-auto rounded-xl border border-[#EADFD7] bg-white px-4 py-2 text-sm font-bold hover:bg-[#3B170D]/5 disabled:opacity-50"
                 onClick={() => setConfirmOpen(false)}
               >
                 Cancel
@@ -640,7 +642,7 @@ export default function Coffees() {
               <button
                 type="button"
                 disabled={deletingLoading}
-                className="rounded-xl bg-red-600 px-4 py-2 text-sm font-bold text-white hover:bg-red-700 disabled:opacity-50"
+                className="w-full sm:w-auto rounded-xl bg-red-600 px-4 py-2 text-sm font-bold text-white hover:bg-red-700 disabled:opacity-50"
                 onClick={confirmDelete}
               >
                 {deletingLoading ? "Deleting..." : "Yes, delete"}

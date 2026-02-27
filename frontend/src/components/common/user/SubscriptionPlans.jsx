@@ -3,14 +3,14 @@ import React from "react";
 const SubscriptionPlans = ({ subscriptions }) => {
   return (
     <div className="h-full flex flex-col">
-      <h3 className="text-lg font-semibold mb-2">Subscription Plans</h3>
+      <h3 className="text-base sm:text-lg font-semibold mb-2">Subscription Plans</h3>
 
       {!subscriptions || subscriptions.length === 0 ? (
         <div className="bg-peach/20 p-4 rounded shadow text-sm text-peach flex-1 flex items-center">
           No subscription plans available.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {subscriptions.map((plan) => (
             <div key={plan._id} className="bg-peach/20 p-4 rounded shadow">
               <h4 className="font-medium">

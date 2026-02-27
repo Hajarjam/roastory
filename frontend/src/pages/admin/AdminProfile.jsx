@@ -22,8 +22,7 @@ export default function AdminProfile() {
     isActive: false,
   });
 
-  const token = localStorage.getItem("authToken"); 
-  console.log("TOKEN =", token);
+  const token = localStorage.getItem("authToken");
 
 
   // charger l'admin connecté
@@ -122,7 +121,7 @@ export default function AdminProfile() {
     return (a + b) || "A";
   }, [form.firstName, form.lastName]);
 
-  if (loading) return <div className="px-8 py-8 text-[#3B170D]">Loading profile...</div>;
+  if (loading) return <div className="px-4 sm:px-8 py-8 text-sm sm:text-base text-[#3B170D]">Loading profile...</div>;
   
 
   return (
